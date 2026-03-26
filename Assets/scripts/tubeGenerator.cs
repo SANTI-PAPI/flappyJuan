@@ -7,6 +7,7 @@ public class tubeGenerator : MonoBehaviour
 {
     public GameObject prefabTubo1;
     public GameObject prefabTubo2;
+    public GameObject score;
     public float tiempoSpawn = 4f;
     public float espacioEntreTubos = 3f;
     public float alturaMax = 2f;
@@ -34,6 +35,15 @@ public class tubeGenerator : MonoBehaviour
 
         Vector3 bottomPos = new Vector3(transform.position.x, centroY - espacioEntreTubos / 2f, 0f);
         Instantiate(prefabTubo1, bottomPos, Quaternion.identity);
+
+
+        Vector3 scorePos = new Vector3(transform.position.x + 1.5f, centroY, 0f);
+        GameObject trigger = Instantiate(score, scorePos, Quaternion.identity);
+
+        // Ajustar tamaño del collider para cubrir el hueco
+        BoxCollider2D col = trigger.GetComponent<BoxCollider2D>();
+        col.isTrigger = true;
+        col.size = new Vector2(1.5f, espacioEntreTubos); 
 
     }
 

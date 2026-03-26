@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class birdMovements : MonoBehaviour
 {
-    public float fuerzaSalto = 5f;
+    public float fuerzaSalto = 3f;
     private Rigidbody2D rb;
+    public GameObject Panel;
 
     void Start()
     {
@@ -24,6 +26,8 @@ public class birdMovements : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Panel.SetActive(true);
+        Time.timeScale = 0f;
         Debug.Log("Colisión con: " + collision.gameObject.name);
     }
 
